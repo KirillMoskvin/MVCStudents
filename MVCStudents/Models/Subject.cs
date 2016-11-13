@@ -11,7 +11,6 @@ namespace MVCStudents.Models
         /// <summary>
         /// Id
         /// </summary>
-        [Required]
         public int SubjectId { get; set; }
         /// <summary>
         /// Название

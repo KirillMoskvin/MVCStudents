@@ -14,24 +14,24 @@
 <h2>Добавление студента</h2>
 <div>
     <form method="post" action="">
-        <input type="hidden" value="" name="StudentId" />
-        <table>
-            <tr>
-                <td><p>Имя: </p></td>
-                <td><input type="text" name="FIO" /></td>
-            </tr>
-            <tr>
-                <td><p>Контактная информация:</p></td>
-                <td><input type="text" name="Contacts" /></td>
-            </tr>
-            <tr>
-                <td><p>Курс: </p></td>
-                <td><input type="number" name="Course" /></td>
-            </tr>
-        </table>
+        @Html.LabelFor(model => model.FIO):<br>
+        @Html.EditorFor(model => model.FIO)
+        @Html.ValidationMessageFor(model => model.FIO)<br>
+        <br>
+        @Html.LabelFor(model => model.Contacts):<br>
+        @Html.TextBoxFor(model => model.Contacts, new { @Value = "" })
+        @Html.ValidationMessageFor(model => model.Contacts)<br>
+        <br>
+
+        @Html.LabelFor(model => model.Course):<br>
+        @Html.TextBoxFor(model => model.Course, new { @Value = "" })
+        @Html.ValidationMessageFor(model => model.Course)<br>
+        <br>
+
         @foreach (Subject subj in ViewBag.Subjects)
         {
-            <input type="checkbox" name="chosenSubjects" value="@subj.SubjectId" />
+            <input type="checkbox" name="chosenSubjects" value="@subj.SubjectId"
+                    @((Model!=null && Model.Subjects.Contains(subj) ? "checked=\"checked\"" : "")) />
             @subj.Name;
             <br>
         }

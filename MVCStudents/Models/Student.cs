@@ -12,7 +12,6 @@ namespace MVCStudents.Models
         /// <summary>
         /// ID
         /// </summary>
-        [Required(ErrorMessage = "required")]
         public int StudentId { get; set; }
         /// <summary>
         /// Фамилия, имя, отччество

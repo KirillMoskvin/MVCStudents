@@ -52,16 +52,26 @@ namespace MVCStudents.Controllers
         public ActionResult EditStudent (Student s, int[] selectedSubjects)
         {
             //проверку на валидацию модели
-         /*   if (!ModelState.IsValid)
-            {
-                
-            }*/
+            /*   if (!ModelState.IsValid)
+               {
+
+               }*/
+            
             Student stud = context.Students.Find(s.StudentId);
+            stud.Contacts = s.Contacts;
+            stud.Course = s.Course;
+            stud.FIO = s.FIO;
             stud.Subjects.Clear();
             if (selectedSubjects != null)
                 foreach (var subj in context.Subjects)
                     if (selectedSubjects.Contains(subj.SubjectId))
                         stud.Subjects.Add(subj);
+
+            if (!ModelState.IsValid)
+            {
+               ViewBag.Subjects = context.Subjects.ToList();
+               return View(stud);
+            }
             context.Entry(stud).State = EntityState.Modified;
             context.SaveChanges();
 
@@ -77,8 +87,9 @@ namespace MVCStudents.Controllers
         [HttpGet]
         public ActionResult AddStudent()
         {
+            
             ViewBag.Subjects = context.Subjects.ToList();
-            return View();
+            return View(/*new Student()*/);
         }
         /// <summary>
         /// Добавление (при отправке формы)
@@ -87,10 +98,16 @@ namespace MVCStudents.Controllers
         [HttpPost]
         public ActionResult AddStudent(Student stud, int[] chosenSubjects)
         {
+            
             if (chosenSubjects!=null)
                 foreach (Subject subj in context.Subjects)
                     if (chosenSubjects.Contains(subj.SubjectId))
                         stud.Subjects.Add(subj);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Subjects = context.Subjects.ToList();
+                return View(stud);
+            }
             context.Students.Add(stud);
             context.SaveChanges();
             return RedirectToAction("Index");
