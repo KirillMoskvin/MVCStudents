@@ -50,6 +50,10 @@ namespace MVCStudents.Controllers
         [HttpPost]
         public ActionResult EditSubject(Subject s)
         {
+            if(!ModelState.IsValid)
+            {
+                return View(s);
+            }
             context.Entry(s).State = EntityState.Modified;
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -64,7 +68,7 @@ namespace MVCStudents.Controllers
         [HttpGet]
         public ActionResult AddSubject()
         {
-            return View();
+            return View(new Subject());
         }
         /// <summary>
         /// Добавление (при отправке формы)
@@ -73,6 +77,10 @@ namespace MVCStudents.Controllers
         [HttpPost]
         public ActionResult AddSubject(Subject subj)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(subj);
+            }
             context.Subjects.Add(subj);
             context.SaveChanges();
             return RedirectToAction("Index");

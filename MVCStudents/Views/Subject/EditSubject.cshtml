@@ -16,17 +16,14 @@
 <h2>Редактирование предмета</h2>
 <div>
     <form method="post" action="">
-        <input type="hidden" value="@Model.SubjectId" name="SubjectId" />
-        <table>
-            <tr>
-                <td><p>Название: </p></td>
-                <td><input type="text" name="Name" value="@Model.Name" /></td>
-            </tr>
-            <tr>
-                <td><p>Преподаватель:</p></td>
-                <td><input type="text" name="Teacher" value="@Model.Teacher" /></td>
-            </tr>
-        </table>
+        @Html.HiddenFor(model => model.SubjectId)
+        @Html.LabelFor(model => model.Name):<br>
+        @Html.EditorFor(model => model.Name, new { @Value = Model.Name })
+        @Html.ValidationMessageFor(model => model.Name)<br>
+        <br>
+        @Html.LabelFor(model => model.Teacher):<br>
+        @Html.TextBoxFor(model => model.Teacher, new { @Value = Model.Teacher })
+        @Html.ValidationMessageFor(model => model.Teacher)<br>
         <input type="submit" value="Отправить" />
     </form>
 </div>

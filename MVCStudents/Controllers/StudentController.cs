@@ -51,12 +51,6 @@ namespace MVCStudents.Controllers
         [HttpPost]
         public ActionResult EditStudent (Student s, int[] selectedSubjects)
         {
-            //проверку на валидацию модели
-            /*   if (!ModelState.IsValid)
-               {
-
-               }*/
-            
             Student stud = context.Students.Find(s.StudentId);
             stud.Contacts = s.Contacts;
             stud.Course = s.Course;
@@ -87,9 +81,8 @@ namespace MVCStudents.Controllers
         [HttpGet]
         public ActionResult AddStudent()
         {
-            
             ViewBag.Subjects = context.Subjects.ToList();
-            return View(/*new Student()*/);
+            return View(new Student());
         }
         /// <summary>
         /// Добавление (при отправке формы)
@@ -98,7 +91,6 @@ namespace MVCStudents.Controllers
         [HttpPost]
         public ActionResult AddStudent(Student stud, int[] chosenSubjects)
         {
-            
             if (chosenSubjects!=null)
                 foreach (Subject subj in context.Subjects)
                     if (chosenSubjects.Contains(subj.SubjectId))
@@ -110,6 +102,7 @@ namespace MVCStudents.Controllers
             }
             context.Students.Add(stud);
             context.SaveChanges();
+
             return RedirectToAction("Index");
         }
         #endregion

@@ -15,16 +15,16 @@
 <div>
     <form method="post" action="">
         @Html.LabelFor(model => model.FIO):<br>
-        @Html.EditorFor(model => model.FIO)
+        @Html.EditorFor(model => model.FIO, new { @Value = Model.FIO })
         @Html.ValidationMessageFor(model => model.FIO)<br>
         <br>
         @Html.LabelFor(model => model.Contacts):<br>
-        @Html.TextBoxFor(model => model.Contacts, new { @Value = "" })
+        @Html.TextBoxFor(model => model.Contacts, new { @Value = Model.Contacts })
         @Html.ValidationMessageFor(model => model.Contacts)<br>
         <br>
 
         @Html.LabelFor(model => model.Course):<br>
-        @Html.TextBoxFor(model => model.Course, new { @Value = "" })
+        @Html.TextBoxFor(model => model.Course, new { @Value = "1" })
         @Html.ValidationMessageFor(model => model.Course)<br>
         <br>
 

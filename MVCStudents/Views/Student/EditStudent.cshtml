@@ -15,21 +15,20 @@
 <h2>Редактирование студента</h2>
 <div>
     <form method="post" action="">
-        <input type="hidden" value="@Model.StudentId" name="StudentId" />
-        <table>
-            <tr>
-                <td><p>Имя: </p></td>
-                <td><input type="text" name="FIO" value="@Model.FIO"/></td>
-            </tr>
-            <tr>
-                <td><p>Контактная информация:</p></td>
-                <td><input type="text" name="Contacts" value="@Model.Contacts"/></td>
-            </tr>
-            <tr>
-                <td><p>Курс: </p></td>
-                <td><input type="number" name="Course" value="@Model.Course"/></td>
-            </tr>
-        </table>
+        @Html.HiddenFor(model => model.StudentId)
+        @Html.LabelFor(model => model.FIO):<br>
+        @Html.EditorFor(model => model.FIO, new { @Value = Model.FIO })
+        @Html.ValidationMessageFor(model => model.FIO)<br>
+        <br>
+        @Html.LabelFor(model => model.Contacts):<br>
+        @Html.TextBoxFor(model => model.Contacts, new { @Value = Model.Contacts })
+        @Html.ValidationMessageFor(model => model.Contacts)<br>
+        <br>
+
+        @Html.LabelFor(model => model.Course):<br>
+        @Html.TextBoxFor(model => model.Course, new { @Value = Model.Course.ToString() })
+        @Html.ValidationMessageFor(model => model.Course)<br>
+        <br>
         @foreach (Subject subj in ViewBag.Subjects)
         {
             <input type="checkbox" name="selectedSubjects" value="@subj.SubjectId"
