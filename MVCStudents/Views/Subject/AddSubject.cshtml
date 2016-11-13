@@ -1,0 +1,32 @@
+﻿@using MVCStudents.Models
+@model MVCStudents.Models.Subject
+@{
+    try
+    {
+        ViewBag.Title = "Edit";
+    }
+    catch (NullReferenceException)
+    {
+    }
+    Layout = "~/Views/MastrPageSubject.cshtml";
+
+}
+<script src="~/scripts/jquery.validate.unobtrusive.js" type="text/javascript"></script>
+
+<h2>Добавление предмета</h2>
+<div>
+    <form method="post" action="">
+        <input type="hidden"  name="SubjectId" />
+        <table>
+            <tr>
+                <td><p>Название: </p></td>
+                <td><input type="text" name="Name" /></td>
+            </tr>
+            <tr>
+                <td><p>Преподаватель:</p></td>
+                <td><input type="text" name="Teacher" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Отправить" />
+    </form>
+</div>

@@ -1,0 +1,32 @@
+﻿@model List<MVCStudents.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MastrPage.cshtml";
+}
+
+<h2>Главная</h2>
+<div>
+    <table>
+        <tr class="header">
+            <td>Id</td>
+            <td>Имя</td>
+            <td>Контактные данные</td>
+            <td>Курс</td>
+            <td colspan="3">Кнопки</td>
+        </tr>
+        @foreach(var st in Model)
+        {
+            <tr>
+                <td>@st.StudentId</td>
+                <td>@st.FIO</td>
+                <td>@st.Contacts</td>
+                <td>@st.Course</td>
+                <td><p><a href="/Student/DeleteStudent/@st.StudentId">Удалить</a></p></td>
+                <td><p><a href="/Student/EditStudent/@st.StudentId">Редактировать</a></p></td>
+                <td><p><a href="/Student/More/@st.StudentId">Подробнее</a></p></td>
+            </tr>
+        }
+    </table>
+    <p><a href="/Student/AddStudent">Добавить</a></p>
+</div>

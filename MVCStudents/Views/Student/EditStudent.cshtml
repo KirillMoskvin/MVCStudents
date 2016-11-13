@@ -1,0 +1,42 @@
+﻿@using MVCStudents.Models
+@model MVCStudents.Models.Student
+@{
+    try
+    {
+        ViewBag.Title = "Edit";
+    }
+    catch (NullReferenceException)
+    {
+    }
+    Layout = "~/Views/MastrPage.cshtml";
+
+}
+
+<h2>Редактирование студента</h2>
+<div>
+    <form method="post" action="">
+        <input type="hidden" value="@Model.StudentId" name="StudentId" />
+        <table>
+            <tr>
+                <td><p>Имя: </p></td>
+                <td><input type="text" name="FIO" value="@Model.FIO"/></td>
+            </tr>
+            <tr>
+                <td><p>Контактная информация:</p></td>
+                <td><input type="text" name="Contacts" value="@Model.Contacts"/></td>
+            </tr>
+            <tr>
+                <td><p>Курс: </p></td>
+                <td><input type="number" name="Course" value="@Model.Course"/></td>
+            </tr>
+        </table>
+        @foreach (Subject subj in ViewBag.Subjects)
+        {
+            <input type="checkbox" name="selectedSubjects" value="@subj.SubjectId"
+                   @((Model.Subjects.Contains(subj) ? "checked=\"checked\"" : "")) />
+                   @subj.Name;
+            <br>
+        }
+        <input type="submit" value="Отправить" />
+    </form>
+</div>

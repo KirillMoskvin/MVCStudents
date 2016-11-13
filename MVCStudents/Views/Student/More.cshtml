@@ -1,0 +1,25 @@
+﻿@using MVCStudents.Models;
+@model MVCStudents.Models.Student
+@{
+    ViewBag.Title = "More";
+    Layout = "~/Views/MastrPage.cshtml";
+}
+
+<h2>Информация:</h2>
+<div>
+    <p>ID: @Model.StudentId </p>
+    <p>ФИО: @Model.FIO</p>
+    <p>Контактная информация: @Model.Contacts</p>
+    @if (Model.Subjects.Count() != 0)
+    {
+        <p>Предметы:</p>
+    }
+    <ul>
+        @foreach(Subject subj in Model.Subjects)
+        {
+            <li>@subj.Name</li>
+        }
+    </ul>
+</div>
+
+

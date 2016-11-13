@@ -1,0 +1,32 @@
+﻿@using MVCStudents.Models
+@model MVCStudents.Models.Subject
+@{
+    try
+    {
+        ViewBag.Title = "Edit";
+    }
+    catch (NullReferenceException)
+    {
+    }
+    Layout = "~/Views/MastrPageSubject.cshtml";
+
+
+}
+
+<h2>Редактирование предмета</h2>
+<div>
+    <form method="post" action="">
+        <input type="hidden" value="@Model.SubjectId" name="SubjectId" />
+        <table>
+            <tr>
+                <td><p>Название: </p></td>
+                <td><input type="text" name="Name" value="@Model.Name" /></td>
+            </tr>
+            <tr>
+                <td><p>Преподаватель:</p></td>
+                <td><input type="text" name="Teacher" value="@Model.Teacher" /></td>
+            </tr>
+        </table>
+        <input type="submit" value="Отправить" />
+    </form>
+</div>

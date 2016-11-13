@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="menu">
+        @Html.ActionLink("Главная", "Index", "Student")
+        <p>@Html.ActionLink("Все предметы", "Index", "Subject")</p>
+        @RenderBody()
+    </div>
+</body>
+</html>
+
+

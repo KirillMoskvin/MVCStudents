@@ -1,12 +1,28 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 2px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+table, td {
+    border: 1px solid #000000;
+    padding: 10px;
+    border-collapse: collapse;
+    text-align:center;
+    background-color:#CCCCCC;
+}
+
+form td, form table
+{
+    border: 0px;
+    text-align:left;
+    background-color: #FFFFFF;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -22,3 +38,30 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.menu{
+    margin: 0;
+}
+
+.field-validation-error {
+    color: #f00;
+}
+ 
+.field-validation-valid {
+    display: none;
+}
+ 
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #f00;
+}
+ 
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+ 
+.validation-summary-valid {
+    display: none;
+}
+

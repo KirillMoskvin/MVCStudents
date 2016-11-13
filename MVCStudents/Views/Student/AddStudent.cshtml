@@ -1,0 +1,40 @@
+﻿@using MVCStudents.Models
+@model MVCStudents.Models.Student
+@{
+    try
+    {
+        ViewBag.Title = "Add";
+    }
+    catch(NullReferenceException)
+    {
+    }
+    Layout = "~/Views/MastrPage.cshtml";
+}
+
+<h2>Добавление студента</h2>
+<div>
+    <form method="post" action="">
+        <input type="hidden" value="" name="StudentId" />
+        <table>
+            <tr>
+                <td><p>Имя: </p></td>
+                <td><input type="text" name="FIO" /></td>
+            </tr>
+            <tr>
+                <td><p>Контактная информация:</p></td>
+                <td><input type="text" name="Contacts" /></td>
+            </tr>
+            <tr>
+                <td><p>Курс: </p></td>
+                <td><input type="number" name="Course" /></td>
+            </tr>
+        </table>
+        @foreach (Subject subj in ViewBag.Subjects)
+        {
+            <input type="checkbox" name="chosenSubjects" value="@subj.SubjectId" />
+            @subj.Name;
+            <br>
+        }
+        <input type="submit" value="Отправить" />
+    </form>
+</div>
